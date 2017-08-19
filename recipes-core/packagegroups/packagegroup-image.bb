@@ -1,6 +1,6 @@
-DESCRIPTION = "Include QT5 modules"
+DESCRIPTION = "Basic modules to get a device booting"
 LICENSE = "MIT"
-PR = "r1"
+PR = "r0"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -11,15 +11,9 @@ ARAGO_BASE = "\
     mtd-utils \
     mtd-utils-ubifs \
     initscript-telnetd \
-    ethtool \
     bash \
     udev-extraconf \
     kernel-modules \
-"
-
-# these require meta-openembedded/meta-oe layer
-ARAGO_EXTRA = "\
-    devmem2 \
 "
 
 ARAGO_TSLIB = "\
@@ -28,29 +22,9 @@ ARAGO_TSLIB = "\
     tslib-tests \
 "
 
-ARAGO_NCURSES = "\
-    ncurses \
-    ncurses-terminfo \
-    ncurses-tools \
-"
-
-ARAGO_FSTOOLS = "\
-    e2fsprogs \
-    e2fsprogs-e2fsck \
-    e2fsprogs-mke2fs \
-    e2fsprogs-tune2fs \
-    dosfstools \
-    util-linux-fdisk \
-    util-linux-mkfs \
-    util-linux-sfdisk \
-    util-linux-fsck \
-"
-
 ARAGO_UTILS = "\
     fbset \
-    usbutils \
     i2c-tools \
-    strace \
 "
 
 
@@ -77,73 +51,34 @@ BASE_SDK = "\
 
 QT5_ESSENTIALS = "\
     qtbase \
-    qtcharts \
+    qtconnectivity \
     qtdeclarative \
+    qtdeclarative-tools \
     qtdeclarative-qmlplugins \
     qtimageformats \
-    qtserialport \
-    qtserialbus \
-    qtconnectivity \
-    qtxmlpatterns \
     qtquickcontrols \
     qtquickcontrols-qmlplugins \
     qtquickcontrols2 \
     qtquickcontrols2-qmlplugins \
-    qtgraphicaleffects-qmlplugins \
-    qtvirtualkeyboard-plugins \
-    qtvirtualkeyboard-qmlplugins \
+    qtserialport \
+    qtserialbus \
+    qtsvg \
+    qttools \
+    qtxmlpatterns \
     liberation-fonts \
 "
 
-ARAGO_TEST = "\
-    evtest \
-    bc \
-    memtester \
-    powertop \
-    stress \
-    rng-tools \
-    perf \
-    smcroute \
-    rwmem \
-    kselftests \
-    cpuset \
-    procps \
-    mtd-utils-ubifs-tests \
-    cpuburn-neon \
-    ltp-ddt \
-    input-utils \
-    cpuloadgen \
-    timestamping \
-    uvc-gadget \
-    omapconf \
-"
-
 UTILS = " \
-    am-sysinfo \
-    strace \
-    oprofile \
-    nbench-byte \
-    trace-cmd \
-    arm-benchmarks \
     dropbear \
     openssh-sftp-server \
-    ptpd \
     libdrm-kms \
-    ${@bb.utils.contains('TUNE_FEATURES', 'armv7a', 'valgrind', '', d)} \
-    stream \
     kexec \
     kdump \
-    u-boot-fw-utils \
     mmc-utils \
     switch-config \
     uio-module-drv-test \
     uio-test-pruss \
     uio-module-drv \
-"
-
-DEVTOOLS = " \
-    packagegroup-core-buildessential \
-    packagegroup-core-tools-debug \
 "
 
 # WLAN support packages.
@@ -179,26 +114,16 @@ BLUETOOTH_STACK = "\
     sbc \
 "
 
-CONNECTIVITY_RDEPENDS = " \
-    iptables \
-    iproute2 \
-    iproute2-tc \
-"
-
 # minimal set of packages - needed for application
 RDEPENDS_${PN} = "\
     ${ARAGO_BASE} \
-    ${ARAGO_EXTRA} \
     ${ARAGO_TSLIB} \
-    ${ARAGO_FSTOOLS} \
     ${ARAGO_UTILS} \
     ${ARAGO_SDK_PREREQ} \
     ${BASE_SDK} \
     ${QT5_ESSENTIALS} \
-    ${ARAGO_TEST} \
     ${UTILS} \
     ${WLAN_COMMON} \
     ${BLUETOOTH_STACK} \
     ${FIRMWARE_AND_DRIVERS} \
-    ${CONNECTIVITY_RDEPENDS} \
 "
