@@ -37,6 +37,7 @@ ARAGO_SDK_PREREQ = "\
 "
 
 BASE_SDK = "\
+    libstdc++ \
     dbus \
     expat \
     glib-2.0 \
@@ -52,6 +53,7 @@ BASE_SDK = "\
 QT5_ESSENTIALS = "\
     qtbase \
     qtconnectivity \
+    qtconnectivity-qmlplugins \
     qtdeclarative \
     qtdeclarative-tools \
     qtdeclarative-qmlplugins \
@@ -63,9 +65,7 @@ QT5_ESSENTIALS = "\
     qtserialport \
     qtserialbus \
     qtsvg \
-    qttools \
     qtxmlpatterns \
-    liberation-fonts \
 "
 
 UTILS = " \

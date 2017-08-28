@@ -2,7 +2,9 @@ DESCRIPTION = "Minimal embedded Qt5 image based upon Arago distribution"
 LICENSE = "MIT"
 PR = "r1"
 
-require ../../../meta-arago/meta-arago-distro/recipes-core/images/arago-image.inc
+require recipes-core/images/arago-image.inc
+
+inherit populate_sdk populate_sdk_qt5
 
 IMAGE_FEATURES += "\
     splash \
@@ -19,5 +21,7 @@ IMAGE_INSTALL += "\
     packagegroup-image \
     packagegroup-core-tools-debug \
 "
+
+SDKIMAGE_FEATURES += "dev-pkgs dbg-pkgs staticdev-pkgs"
 
 export IMAGE_BASENAME = "qt5-rootfs-image"
